@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 11:06:14 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/03 14:10:17 by damachad         ###   ########.fr       */
+/*   Updated: 2023/05/03 15:13:51 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include "./libft/libft.h"
 
-int	ft_putnbr_base(int n, char *base_set, int base)
+int	ft_putnbr_base(long int n, char *base_set, int base)
 {
 	char	nbr_hex[50];
 	char	*ptr;
