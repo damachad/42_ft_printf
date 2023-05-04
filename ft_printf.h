@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 10:33:41 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/04 13:40:24 by damachad         ###   ########.fr       */
+/*   Created: 2023/05/01 11:15:25 by damachad          #+#    #+#             */
+/*   Updated: 2023/05/04 15:01:17 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
 
-int	ft_printf(const char *str, ...)
-{
-	va_list	args;
-	int		chars;
+int		ft_putchar_2(char c);
+int		ft_putstr_2(char *s);
+int		ft_putnbr_rec(int n);
+int		ft_putnbr_hex(unsigned int n);
+int		ft_putnbr_uphex(unsigned int n);
+int		ft_put_add(unsigned long int n);
+int		ft_printf(const char *str, ...);
+int		ft_putnbr_unsig(unsigned int nb);
+int		ft_convert(char format, va_list args);
 
-	chars = 0;
-	va_start(args, str);
-	while (*str != '\0')
-	{
-		while (*str != '%')
-		{
-			if (*str == '\0')
-			{
-				va_end(args);
-				return (chars);
-			}
-			ft_putchar_2(*str);
-			chars++;
-			str++;
-		}
-		str++;
-		chars += ft_convert(*str, args);
-		str++;
-	}
-	va_end(args);
-	return (chars);
-}
+#endif

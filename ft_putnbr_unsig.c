@@ -1,41 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsig.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 10:33:41 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/04 13:40:24 by damachad         ###   ########.fr       */
+/*   Created: 2023/05/04 11:24:49 by damachad          #+#    #+#             */
+/*   Updated: 2023/05/04 14:03:05 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+static void	ft_printnumb(unsigned int x, int *count)
 {
-	va_list	args;
-	int		chars;
-
-	chars = 0;
-	va_start(args, str);
-	while (*str != '\0')
+	if (x < 10)
 	{
-		while (*str != '%')
-		{
-			if (*str == '\0')
-			{
-				va_end(args);
-				return (chars);
-			}
-			ft_putchar_2(*str);
-			chars++;
-			str++;
-		}
-		str++;
-		chars += ft_convert(*str, args);
-		str++;
+		*count += ft_putchar_2(x + 48);
+		return ;
 	}
-	va_end(args);
-	return (chars);
+	else
+		ft_printnumb(x / 10, count);
+	ft_printnumb(x % 10, count);
+}
+
+int	ft_putnbr_unsig(unsigned int nb)
+{
+	int	count;
+
+	count = 0;
+	if (nb < 0)
+	{
+		count = ft_putchar_2('-');
+		nb *= -1;
+	}
+	ft_printnumb(nb, &count);
+	return (count);
 }

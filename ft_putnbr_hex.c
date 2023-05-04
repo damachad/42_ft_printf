@@ -1,41 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 10:33:41 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/04 13:40:24 by damachad         ###   ########.fr       */
+/*   Created: 2023/05/02 11:06:14 by damachad          #+#    #+#             */
+/*   Updated: 2023/05/04 14:17:07 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *str, ...)
+int	ft_putnbr_hex(unsigned int n)
 {
-	va_list	args;
-	int		chars;
+	char	nbr_hex[50];
+	char	*ptr;
+	int		size;
 
-	chars = 0;
-	va_start(args, str);
-	while (*str != '\0')
+	size = 0;
+	ptr = &nbr_hex[49];
+	*ptr = '\0';
+	if (n == 0)
 	{
-		while (*str != '%')
-		{
-			if (*str == '\0')
-			{
-				va_end(args);
-				return (chars);
-			}
-			ft_putchar_2(*str);
-			chars++;
-			str++;
-		}
-		str++;
-		chars += ft_convert(*str, args);
-		str++;
+		ft_putchar_2('0');
+		size++;
 	}
-	va_end(args);
-	return (chars);
+	while (n > 0)
+	{
+		*--ptr = "0123456789abcdef"[n % 16];
+		n /= 16;
+		size++;
+	}
+	ft_putstr_2(ptr);
+	return (size);
 }

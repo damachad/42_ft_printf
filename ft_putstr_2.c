@@ -6,17 +6,22 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:08:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/03 14:10:09 by damachad         ###   ########.fr       */
+/*   Updated: 2023/05/04 14:55:32 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putstr_2(char *s)
 {
 	int	i;
 
 	i = 0;
+	if (!s)
+	{
+		ft_putstr_2("(null)");
+		return (6);
+	}
 	while (s[i] != '\0')
 	{
 		write(1, &s[i], 1);

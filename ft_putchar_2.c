@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/03 14:06:00 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/03 14:06:39 by damachad         ###   ########.fr       */
+/*   Updated: 2023/05/04 12:07:22 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 int	ft_putchar_2(char c)
 {
