@@ -22,8 +22,7 @@ OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME):
-	cc $(CFLAGS) -c $(SRC)
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
 clean:
@@ -33,3 +32,5 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
